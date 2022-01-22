@@ -1,22 +1,89 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* .App {
   text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 16px;
+  color: #000000;
 }
 
 .App-link {
   color: #61dafb;
+} */
+
+/* Select {
+  width: 100%;
+} */
+
+.general {
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 16px;
+  font-family: 'Inter';
+  font-weight: 700;
 }
 
-Select {
-  width: 50%;
+.left-column {
+  position: absolute;
+  right: 55%;
+  margin: 4px 10px 0px 0px;
+}
+
+.right-column {
+  position: absolute;
+  left: 45%;
+  margin: 0px 0px 0px 0px
+}
+
+.row {
+  margin: 15px 0px 15px 0px;
+}
+
+h1 {
+  position: relative;
+  font-weight: 1000;
+}
+
+input {
+  font-size: 16px;
+  font-family: 'Inter';
+  font-weight: 400;
+  width: 300px;
+  border-style: solid;
+  border-radius: 8px;
+  border-width: 2px;
+  padding: 2px 4px 2px 4px;
+}
+
+select {
+  font-size: 16px;
+  font-family: 'Inter';
+  font-weight: 400;
+  width: 312px;
+  border-style: solid;
+  border-radius: 8px;
+  border-width: 2px;
+  padding: 2px 0px 2px 0px;
+}
+
+button {
+  font-size: 16px;
+  font-family: 'Inter';
+  font-weight: 700;
+  width: 100px;
+  border-style: solid;
+  border-radius: 8px;
+  border-width: 2px;
+  margin: 10px 0px 0px 0px;
+  padding: 2px 0px 2px 0px;
 }
