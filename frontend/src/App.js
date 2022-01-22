@@ -3,7 +3,7 @@ import Forms from './components/Forms.js'
 
 function App() {
   return (
-    <div>
+    <div className='general'>
        <Forms />
     </div>
   );

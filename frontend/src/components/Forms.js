@@ -28,14 +28,14 @@ function Forms() {
     if (watchPronoun == 'other') {
       return (
         <div>
-          <label>
-            Other pronoun
-            <input
-              type='text'
-              placeholder='Preferred pronoun that is not on the list'
-              {...register('pronounOther')}
-            />
-          </label> <br />
+          <div className='row'>
+          <div className='left-column'>Other pronoun</div>
+          <div className='right-column'><input
+            type='text'
+            placeholder='Preferred pronoun that is not on the list'
+            {...register('pronounOther')}
+          /></div></div>
+          <br />
         </div>
       )
     }
@@ -46,70 +46,71 @@ function Forms() {
 
       <h1>Forms</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div className='row'>
+        <div className='left-column'>Name</div>
+        <div className='right-column'><input
+          type='text'
+          placeholder='First and lastname'
+          {...register('name')}
+        /></div></div>
+        <br />
 
-        <label>
-          Name
-	        <input
-            type='text'
-            placeholder='First and lastname'
-            {...register('name')}
-          />
-        </label> <br />
-
-        <label>
-          Pronoun
-          <select {...register('pronoun')} defaultValue={'they-them'}>
-            {pronouns.map(item => {
-              return (<option key={item.value} value={item.value}>{item.text}</option>)
-            })}
-          </select>
-        </label> <br />
+        <div className='row'>
+        <div className='left-column'>Pronoun</div>
+        <div className='right-column'><select {...register('pronoun')} defaultValue={'they-them'}>
+          {pronouns.map(item => {
+            return (<option key={item.value} value={item.value}>{item.text}</option>)
+          })}
+        </select></div></div>
+        <br />
 
         {otherPronoun()}
+        
+        <div className='row'>
+        <div className='left-column'>Contact</div>
+        <div className='right-column'><input
+          type='text'
+          placeholder='Preferred method of contact'
+          {...register('contact')}
+        /></div></div>
+        <br />
 
-        <label>
-          Contact
-          <input
-            type='text'
-            placeholder='Preferred method of contact'
-            {...register('contact')}
-          />
-        </label> <br />
-
-        <label>
-          Blurb
-          <input
-            type='text'
-            placeholder='Short blurb/bio about yourself'
-            {...register('blurb')}
-          />
-        </label> <br />
-
-        <label>
-          Number of classes
-          <input
-            name='numClass'
-            type='number' min='0'
-            defaultValue={0}
-            placeholder='Number of classes to be submitted'
-            {...register('numClass')}
-          />
-        </label> <br />
+        <div className='row'>
+        <div className='left-column'>Blurb</div>
+        <div className='right-column'><input
+          type='text'
+          placeholder='Short blurb/bio about yourself'
+          {...register('blurb')}
+        /></div></div>
+        <br />
+        
+        <div className='row'>
+        <div className='left-column'>Number of classes</div>
+        <div className='right-column'><input
+          name='numClass'
+          type='number' min='0'
+          defaultValue={0}
+          placeholder='Number of classes to be submitted'
+          {...register('numClass')}
+        /></div></div>
+        <br />
         
         {classNums().map(i => (
           <div key={i}>
-            <label>
-              Class {i + 1}
-              <input
-                type='text'
-                placeholder=''
-                {...register(`class[${i}]`)}
-              />
-            </label> <br />
+            <div className='row'>
+            <div className='left-column'>Class {i + 1}</div>
+            <div className='right-column'><input
+              type='text'
+              placeholder=''
+              {...register(`classes[${i}]`)}
+            /></div></div>
+            <br />
           </div>
         ))}
 
-        <input type='submit' />
+        <br />
+
+        <button type='submit'>Submit</button>
       </form>
     </div>
   );
