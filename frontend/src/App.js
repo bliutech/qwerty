@@ -1,10 +1,12 @@
 import './App.css';
+import Login from './components/Login.js'
 import Forms from './components/Forms.js'
 
 function App() {
   return (
     <div className='general'>
-       <Forms />
+      <Login />
+      {/* <Forms /> */}
     </div>
   );
 }

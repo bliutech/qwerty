@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import { useState, useEffect } from 'react';
 
 const pronouns = [
   { value: 'he-him', text: 'he/him' },
@@ -45,12 +44,14 @@ function Forms() {
     <div>
 
       <h1>Forms</h1>
+
       <form onSubmit={handleSubmit(onSubmit)}>
+
         <div className='row'>
         <div className='left-column'>Name</div>
         <div className='right-column'><input
           type='text'
-          placeholder='First and lastname'
+          placeholder='First and last name'
           {...register('name')}
         /></div></div>
         <br />
@@ -111,6 +112,7 @@ function Forms() {
         <br />
 
         <button type='submit'>Submit</button>
+        
       </form>
     </div>
   );
