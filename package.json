@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "formik": "^2.2.9",
-    "react-hook-form": "^7.25.0",
-    "react-select": "^5.2.2"
-  }
-}
