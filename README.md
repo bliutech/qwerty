@@ -1,8 +1,5 @@
 # qwerty
 Project group for QWER+ Hacks 2022.
 
-By Benson Liu and Jordan Lin.
-
-Test 
-
-new message!
+##  Authors
+Amanda Wang, Benson Liu, Emily Liang, & Jordan Lin
