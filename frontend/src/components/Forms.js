@@ -70,7 +70,7 @@ let [blurb, setBlurb] = useState('');
   return (
     <div>
 
-      <h1>Forms</h1>
+      <h1>Form</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -82,7 +82,6 @@ let [blurb, setBlurb] = useState('');
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder='First and Last Name'
-          {...register('name')}
         /></div></div>
         <br />
 

@@ -34,7 +34,7 @@ function RegisterMod() {
       </form>
 
     </div>
-  )
+  );
 }
 
 export default RegisterMod;
