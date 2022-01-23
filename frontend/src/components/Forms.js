@@ -69,9 +69,6 @@ let [blurb, setBlurb] = useState('');
 
   return (
     <div>
-
-      <h1>Forms</h1>
-
       <form onSubmit={handleSubmit(onSubmit)}>
 
         <div className='row'>
