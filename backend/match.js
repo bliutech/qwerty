@@ -1,7 +1,8 @@
-databaseOfLists = [];
+let databaseOfLists = [];
 
-function remove(string){
-    return string.replace(" ", "");
+function remove(stri){
+    let s = stri.replace(/\s/g, "");
+    return s;
 }
 
 function getPronouns(json){
@@ -13,70 +14,66 @@ function getPronouns(json){
 
 //match functions
 function match_classes(class_list, database_list){
-    for (c in class_list){
-        for (d in database_list){
+    let boolMatch = false;
+    class_list.forEach((c) => {
+        database_list.forEach((d) => {
             if (remove(c).toUpperCase() == remove(d).toUpperCase()){
-                return true;
+                boolMatch = true;
+                return;
             }
-        }
-    }
-    return false;
+        });
+    });
+    return boolMatch;
 }
 
-//if json.pronoun== "other" the string passed in should be pronounOther
-function match_pronouns(string, database_pronoun){
-    
-    str1 = remove(string);
-    str2 = remove(database_pronoun);
-    if (str1.toLowerCase() == str2.toLowerCase()){
-            return true;
+// if json.pronoun== "other" the string passed in should be pronounOther
+function match_pronouns(stri, database_pronoun){
+    if (remove(stri).toLowerCase() === remove(database_pronoun).toLowerCase()){
+        return true;
     } 
     return false;
 }
 
 function any_match_pronouns(string, databaseOfLists){
-    for(d in databaseOfLists){
-        if (remove(string).toLowerCase() == d["pronoun"].toLowerCase()){
-            return true;
+    let boolMatch = false;
+    databaseOfLists.forEach((d) => {
+        if (remove(string).toLowerCase() == d["pronouns"].toLowerCase()){
+            boolMatch = true;
+            return;
         }
-    }
-    return false;
+    });
+    return boolMatch;
 }
 
 function match(json){
     index = [];
-    if(! any_match_pronouns(json["pronoun"], databaseOfLists)){
-        i = 0;
-        for (d in databaseOfLists){
+    if(! (any_match_pronouns(json.pronouns, databaseOfLists))){
+        databaseOfLists.forEach((d, i) => {
             if(match_classes(json["classes"], d["classes"])){
-                index.append(i);
+                index.push(i);
             }
-            i++;
-        }
+        });
     }
     else{
-        i = 0;
-        for (d in databaseOfLists){
-            if (match_classes(json["classes"], d["classes"]) && match_pronouns(json["pronoun"], d["pronoun"])){
-                index.append(i);
+        databaseOfLists.forEach((d, i) => {
+            if (match_classes(json["classes"], d["classes"]) && match_pronouns(json["pronouns"], d["pronouns"])){
+                index.push(i);
             }
-            i++;
-        }
+        });
     }
     return index;
 }
 
 //testing:
-let data_set = '{"classes": ["math"], "pronoun": "they/them"}';
+let data_set =  '{"classes": ["MATH 32B" , "CS 31" , "PHYSICS 1A", "ENGR 96A", "CS 32", "CS 33"], "pronouns": "he-him"}';
 //json_one = json.dumps(data_set)
 const json_obj = JSON.parse(data_set);
-let data_set_two = '{"classes": ["MATH 32B" , "CS 31" , "PHYSICS 1A", "ENGR 96A", "CS 32", "CS 33"], "pronoun": "she/her"}';
+let data_set_two =  '{"classes": ["MATH 32B" , "CS 31" , "PHYSICS 1A", "ENGR 96A", "CS 32", "CS 33"],"pronouns": "she-her"}';
 //json_two = json.dumps(data_set_two)
 const json_obj2 = JSON.parse(data_set_two);
-let data_set_three = '{"classes": ["MATH 32B" , "ENGR 96A", "CS 32", "CS 33"], "pronoun": "he/him"}';
+let data_set_three =  '{"classes": ["MATH 32B" , "ENGR 96A", "CS 32", "CS 33"],"pronouns": "he-him"}';
 //json_three = json.dumps(data_set_three)
 const json_obj3 = JSON.parse(data_set_three);
 databaseOfLists.push(json_obj2);
 databaseOfLists.push(json_obj3);
 console.log(match(json_obj));
-
