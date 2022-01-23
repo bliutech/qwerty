@@ -43,14 +43,13 @@ function ResultMod() {
     setResultsArr(Object.elements(results));
     
   })();
-
-
   return (
     <div className='resultPage'>
 
       <h1>Results</h1>
 
-      {results.map(person => {
+      {results.forEach(person => {
+        {console.log(person.name)}
         return (
           <div className='resultField white-rectangle' key={person.name}>
             <div id='nameField'>
