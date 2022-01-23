@@ -1,4 +1,4 @@
-import { ref, set, get, child } from "firebase/database";
+import { ref, get, child } from "firebase/database";
 import { useState, useEffect } from 'react';
 import db from '../config';
 
@@ -20,31 +20,29 @@ import db from '../config';
 // ]
 
 function ResultMod() {
-  let results = []
-
+  const [results, setResults] = useState([]);
+  const [resultsArr, setResultsArr] = useState([]);
   async function getUser() {
+    let temp = [];
     let dbSnapshot = await get(child(ref(db), '/users'));
     dbSnapshot.forEach(user =>{
-      results.push({
+      temp.push({
         name: user.val().name,
         pronouns: user.val().pronouns,
         contact: user.val().contact,
         blurb: user.val().blurb,
         classes: user.val().classes
-      }); 
+      });
     });
+    return temp;
   }
 
-  getUser();
-  console.log(results);
-
-  // useEffect(async () => {
-  //   console.log('hi');
-  //   await getUser();
-  // }, []);
-
-  console.log(results)
-
+  (async () => {
+    const temp = await getUser();
+    setResults(temp);
+    setResultsArr(Object.elements(results));
+    
+  })();
   return (
     <div className='resultPage'>
 
