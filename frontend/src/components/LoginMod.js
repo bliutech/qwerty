@@ -1,8 +1,10 @@
 import db from '../config';
 import { useState } from 'react';
 import { ref, set, get, child } from "firebase/database";
+import {Link} from "react-router-dom";
 function LoginMod() {
   let results = [];
+  let [boolCheck, setBoolCheck] = useState(false);
 
   async function login(){
     let db_snapshot = await get(child(ref(db), 'users/'));
@@ -10,16 +12,14 @@ function LoginMod() {
     let temp;
     db_snapshot.forEach(code_snap => {
       if (code_snap.key === user && code_snap.val().password === pass) {
-        alert('logged in!');
         boolCheckUser = true;
-        temp = getUser();
+        getUser();
+        setBoolCheck(true);
         return;
       }
     });
-    if(boolCheckUser) return temp;
-    alert('Invalid credentials!');
-    return null;
-  }
+    if(!boolCheckUser) alert('Invalid credentials :/');
+    }
 
   async function getUser() {
     return get(child(ref(db), '/users' + user));
@@ -68,9 +68,14 @@ return (
         /></div></div>
       <br /><br />
       <button type='submit'
-          onClick={() => {login();}}
+          onClick={() => { 
+            (async () => {
+              await login();
+            })();
+          
+          }}
         >
-          Submit
+          <Link to={boolCheck ? '/results' : '/login'}>Submit</Link>
         </button>
   </div>
 );
