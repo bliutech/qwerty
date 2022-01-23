@@ -9,7 +9,7 @@ const db = initializeApp({
   messagingSenderId: "38457080982",
   appId: "1:38457080982:web:cbfbc0ec2e85ed3fc656b7",
   measurementId: "G-Y6Q04Q0MS5"
-  });
+});
 
   
 

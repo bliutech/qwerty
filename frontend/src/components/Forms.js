@@ -4,13 +4,13 @@ import { useState } from 'react';
 import { ref, set, push, child } from "firebase/database";
 
 const pronouns = [
-  { value: 'he-him', text: 'he/him' },
-  { value: 'he-they', text: 'he/they' },
-  { value: 'they-he', text: 'they/he' },
-  { value: 'they-them', text: 'they/them' },
-  { value: 'they-she', text: 'they/she' },
-  { value: 'she-they', text: 'she/they' },
-  { value: 'she-her', text: 'she/her' },
+  { value: 'he/him', text: 'he/him' },
+  { value: 'he/they', text: 'he/they' },
+  { value: 'they/he', text: 'they/he' },
+  { value: 'they/them', text: 'they/them' },
+  { value: 'they/she', text: 'they/she' },
+  { value: 'she/they', text: 'she/they' },
+  { value: 'she/her', text: 'she/her' },
   { value: 'other', text: 'other' }
 ];
 
@@ -20,7 +20,6 @@ function Forms() {
 
   const onSubmit = data => {
     update(data.classes);
-
   }  // put function that calls backend
 
   const watchNumClass = watch('numClass');
@@ -30,14 +29,13 @@ function Forms() {
     return [...Array(parseInt(watchNumClass || 0)).keys()];
   }
 
-let [name, setName] = useState('');
-let [pronounsV, setPronounsV] = useState('he/him');
-let [contact, setContact] = useState('');
-let [otherPronoun, setOtherPronoun] = useState('');
-let [blurb, setBlurb] = useState('');
+  let [name, setName] = useState('');
+  let [pronounsV, setPronounsV] = useState('he/him');
+  let [contact, setContact] = useState('');
+  let [otherPronoun, setOtherPronoun] = useState('');
+  let [blurb, setBlurb] = useState('');
   const update = (classes) => {
     let finalPronoun = pronounsV === 'other' ? otherPronoun : pronounsV
-    if(finalPronoun === 'he/him') finalPronoun = 'he-him';
     push(child(ref(db), 'users/'), {
       name: name,
       pronouns: finalPronoun,
@@ -45,13 +43,15 @@ let [blurb, setBlurb] = useState('');
       blurb: blurb,
       classes: classes
     });
+    console.log('hi')
   }
+
   function testOther () {
     if (pronounsV == 'other') {
       return (
         <div>
           <div className='row'>
-          <div className='left-column'>Other pronoun</div>
+          <div className='left-column'>Other pronoun(s)</div>
           <div className='right-column'><input
             type='text'
             value={otherPronoun}
@@ -86,7 +86,7 @@ let [blurb, setBlurb] = useState('');
         <br />
 
         <div className='row'>
-        <div className='left-column'>Pronoun</div>
+        <div className='left-column'>Pronoun(s)</div>
         <div className='right-column'>
           <select value = {pronounsV}
           onChange={(e) => setPronounsV(e.target.value)}
@@ -137,6 +137,7 @@ let [blurb, setBlurb] = useState('');
             <div className='right-column'><input
               type='text'
               placeholder=''
+              {...register(`classes[${i}]`)}
             /></div></div>
             <br />
           </div>
