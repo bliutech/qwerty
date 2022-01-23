@@ -1,6 +1,6 @@
 # 🌈 Qwerty 🌈
 
-![qwerty logo](https://raw.githubusercontent.com/bliutech/qwerty/main/frontend/public/files/logo-whole.png)
+![qwerty logo](https://raw.githubusercontent.com/bliutech/qwerty/main/frontend/src/files/logo-whole.png)
 
 Qwerty is the first social website focused on connecting students with similar classes and gender identities. To get started simply input your information and our system
 will automatically connect you with other students. If there are no other students with similar gender identities only your classes will be considered in the matching system. Have fun, and good luck with studying!
