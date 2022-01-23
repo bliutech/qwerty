@@ -10,4 +10,4 @@ Amanda Wang, Benson Liu, Emily Liang, & Jordan Lin
 
 ## Deployment
 
-See Qwerty live at [https://qwerty-schedule.tech](https://qwerty-schedule.tech).
+See Qwerty live at [https://www.qwerty-schedule.tech/](https://www.qwerty-schedule.tech/).
