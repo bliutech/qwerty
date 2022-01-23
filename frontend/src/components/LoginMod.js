@@ -34,7 +34,7 @@ function LoginMod() {
       </form>
 
     </div>
-  )
+  );
 }
 
 export default LoginMod;
