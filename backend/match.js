@@ -17,8 +17,6 @@ function match_classes(class_list, database_list){
     let boolMatch = false;
     class_list.forEach((c) => {
         database_list.forEach((d) => {
-            //console.log(remove(c).toUpperCase());
-            //console.log(remove(d).toUpperCase());
             if (remove(c).toUpperCase() == remove(d).toUpperCase()){
                 boolMatch = true;
                 return;
@@ -28,7 +26,7 @@ function match_classes(class_list, database_list){
     return boolMatch;
 }
 
-//if json.pronoun== "other" the string passed in should be pronounOther
+// if json.pronoun== "other" the string passed in should be pronounOther
 function match_pronouns(stri, database_pronoun){
     if (remove(stri).toLowerCase() === remove(database_pronoun).toLowerCase()){
         return true;
@@ -79,8 +77,3 @@ const json_obj3 = JSON.parse(data_set_three);
 databaseOfLists.push(json_obj2);
 databaseOfLists.push(json_obj3);
 console.log(match(json_obj));
-console.log("success");
-/*
-'{ "bob" : {' +
-'{ "jane" : {' +
-'{ "emily" : {' +*/
