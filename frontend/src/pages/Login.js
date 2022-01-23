@@ -1,7 +1,8 @@
+import LoginMod from "../components/LoginMod.js";
 export default function Login(){
     return(
         <div>
-            <p>Login to your account!</p>
+            <LoginMod />
         </div>
     );
 }
