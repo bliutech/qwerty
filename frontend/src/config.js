@@ -1,16 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 const db = initializeApp({
-  apiKey: "AIzaSyAZpxYMmrt52ewsblpgdBuYfswUx6wWHqQ",
-  authDomain: "qwerty-f9aa1.firebaseapp.com",
-  databaseURL: "https://qwerty-f9aa1-default-rtdb.firebaseio.com",
-  projectId: "qwerty-f9aa1",
-  storageBucket: "qwerty-f9aa1.appspot.com",
-  messagingSenderId: "38457080982",
-  appId: "1:38457080982:web:cbfbc0ec2e85ed3fc656b7",
-  measurementId: "G-Y6Q04Q0MS5"
+  apiKey: "AIzaSyBp-1e1K4mJmKDrbIpvqupmbBs2EsG0llM",
+  authDomain: "qwerty-2-f6dcb.firebaseapp.com",
+  databaseURL: "https://qwerty-2-f6dcb-default-rtdb.firebaseio.com",
+  projectId: "qwerty-2-f6dcb",
+  storageBucket: "qwerty-2-f6dcb.appspot.com",
+  messagingSenderId: "504425589866",
+  appId: "1:504425589866:web:d358a470d7d36e731fae13"
 });
-
   
 
 const database = getDatabase()

@@ -45,35 +45,37 @@ function any_match_pronouns(string, databaseOfLists){
     return boolMatch;
 }
 
-function match(json){
-    index = [];
+function match(json, databaseOfLists){
+    let index = [];
     if(! (any_match_pronouns(json.pronouns, databaseOfLists))){
         databaseOfLists.forEach((d, i) => {
             if(match_classes(json["classes"], d["classes"])){
-                index.push(i);
+                index.push(d.key);
             }
         });
     }
     else{
         databaseOfLists.forEach((d, i) => {
             if (match_classes(json["classes"], d["classes"]) && match_pronouns(json["pronouns"], d["pronouns"])){
-                index.push(i);
+                index.push(d.key);
             }
         });
     }
     return index;
 }
 
-//testing:
-let data_set =  '{"classes": ["MATH 32B" , "CS 31" , "PHYSICS 1A", "ENGR 96A", "CS 32", "CS 33"], "pronouns": "he-him"}';
-//json_one = json.dumps(data_set)
-const json_obj = JSON.parse(data_set);
-let data_set_two =  '{"classes": ["MATH 32B" , "CS 31" , "PHYSICS 1A", "ENGR 96A", "CS 32", "CS 33"],"pronouns": "she-her"}';
-//json_two = json.dumps(data_set_two)
-const json_obj2 = JSON.parse(data_set_two);
-let data_set_three =  '{"classes": ["MATH 32B" , "ENGR 96A", "CS 32", "CS 33"],"pronouns": "he-him"}';
-//json_three = json.dumps(data_set_three)
-const json_obj3 = JSON.parse(data_set_three);
-databaseOfLists.push(json_obj2);
-databaseOfLists.push(json_obj3);
-console.log(match(json_obj));
+export default match;
+
+// //testing:
+// let data_set =  '{"classes": ["MATH 32B" , "CS 31" , "PHYSICS 1A", "ENGR 96A", "CS 32", "CS 33"], "pronouns": "he-him"}';
+// //json_one = json.dumps(data_set)
+// const json_obj = JSON.parse(data_set);
+// let data_set_two =  '{"classes": ["MATH 32B" , "CS 31" , "PHYSICS 1A", "ENGR 96A", "CS 32", "CS 33"],"pronouns": "she-her"}';
+// //json_two = json.dumps(data_set_two)
+// const json_obj2 = JSON.parse(data_set_two);
+// let data_set_three =  '{"classes": ["MATH 32B" , "ENGR 96A", "CS 32", "CS 33"],"pronouns": "he-him"}';
+// //json_three = json.dumps(data_set_three)
+// const json_obj3 = JSON.parse(data_set_three);
+// databaseOfLists.push(json_obj2);
+// databaseOfLists.push(json_obj3);
+// console.log(match(json_obj));
