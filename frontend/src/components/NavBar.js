@@ -12,11 +12,6 @@ export default function NavBar(){
                 <li><Link to='/home'>Home</Link></li>
                 <li><Link to='/register'>Register</Link></li>
                 <li><Link to='/login'>Login</Link></li>
-<<<<<<< HEAD
-                <li><Link to='/'>Home</Link></li>
-=======
-                
->>>>>>> 3008072d (couldnt get navbar to work :()
                 </ul>
             </nav>
         </header>
