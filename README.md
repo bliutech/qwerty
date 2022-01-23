@@ -16,8 +16,8 @@ Developed by the Qwerty team: Amanda Wang, Benson Liu, Emily Liang, & Jordan Lin
 ## 💻 Languages & Tools 💻
 
 Qwerty was developed using the following technlogy:
- - Javascript ![](https://seeklogo.com/images/J/javascript-logo-8892AEFCAC-seeklogo.com.png)
- - React.js ![](https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png)
- - DNS Provider (Domain.com) ![](https://i.pinimg.com/originals/4f/74/d3/4f74d364da34f030303b7065fe431afc.jpg)
- - GitHub Pages ![](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
+ - Javascript <img src="https://seeklogo.com/images/J/javascript-logo-8892AEFCAC-seeklogo.com.png" alt="javascript" width="30px"/>
+ - React.js <img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" alt="react.js" width="30px"/>
+ - DNS Provider (Domain.com) <img src="https://i.pinimg.com/originals/4f/74/d3/4f74d364da34f030303b7065fe431afc.jpg" alt="Domain.com" width="30px"/>
+ - GitHub Pages <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="github" width="30px"/>
  
