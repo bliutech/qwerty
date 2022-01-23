@@ -9,8 +9,8 @@ function LoginMod() {
   async function login(){
     let db_snapshot = await get(child(ref(db), 'users/'));
     let boolCheckUser = false;
+    let temp;
     db_snapshot.forEach(code_snap => {
-      console.log(code_snap.key);
       if (code_snap.key === user && code_snap.val().password === pass) {
         boolCheckUser = true;
         getUser();
@@ -22,17 +22,17 @@ function LoginMod() {
     }
 
   async function getUser() {
-    let dbSnapshot = await get(child(ref(db), '/users'));
-    dbSnapshot.forEach(user =>{
-      results.push({
-        name: user.val().name,
-        pronouns: user.val().pronouns,
-        contact: user.val().contact,
-        blurb: user.val().blurb,
-        classes: user.val().classes
-      }); 
-    });
-    console.log(results);
+    return get(child(ref(db), '/users' + user));
+    // dbSnapshot.forEach(user =>{
+    //   results.push({
+    //     name: user.val().name,
+    //     pronouns: user.val().pronouns,
+    //     contact: user.val().contact,
+    //     blurb: user.val().blurb,
+    //     classes: user.val().classes,
+    //     username: user.val().key
+    //   }); 
+    // });
   }
 
   // async function results(){
