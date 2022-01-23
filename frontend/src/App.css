@@ -62,6 +62,9 @@ h1 {
   font-weight: 1000;
   text-align: center;
 }
+li {
+  text-align:center;
+}
 
 input {
   font-size: 16px;
