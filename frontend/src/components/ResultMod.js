@@ -32,7 +32,7 @@ function ResultMod() {
         contact: user.val().contact,
         blurb: user.val().blurb,
         classes: user.val().classes,
-        key: user.key
+        username: user.key
       }); 
     });
     return resultsTemp;
@@ -50,7 +50,7 @@ function ResultMod() {
 
       {results.map(person => {
         return (
-          <div className='resultField white-rectangle' key={person.key}>
+          <div className='resultField white-rectangle' key={person.username}>
             <div id='nameField'>
               <h2>{person.name} </h2>
               <span>({person.pronouns})</span>
