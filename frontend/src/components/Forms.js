@@ -47,7 +47,6 @@ let [blurb, setBlurb] = useState('');
         }
       });
     if(boolCheckUser) return;
-
     let finalPronoun = pronounsV === 'other' ? otherPronoun : pronounsV
     if(finalPronoun === 'he/him') finalPronoun = 'he-him';
     set(child(ref(db), 'users/' + user), {
