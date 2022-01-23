@@ -1,4 +1,7 @@
 import { useForm } from 'react-hook-form';
+import db from '../config';
+import { useState } from 'react';
+import { ref, set, push, child } from "firebase/database";
 
 const pronouns = [
   { value: 'he-him', text: 'he/him' },
@@ -11,10 +14,14 @@ const pronouns = [
   { value: 'other', text: 'other' }
 ];
 
+
 function Forms() {
   const { register, handleSubmit, reset, clearErrors, watch } = useForm();
 
-  const onSubmit = data => console.log(data);  // put function that calls backend
+  const onSubmit = data => {
+    update(data.classes);
+
+  }  // put function that calls backend
 
   const watchNumClass = watch('numClass');
   const watchPronoun = watch('pronoun');
@@ -23,22 +30,42 @@ function Forms() {
     return [...Array(parseInt(watchNumClass || 0)).keys()];
   }
 
-  function otherPronoun() {
-    if (watchPronoun == 'other') {
+let [name, setName] = useState('');
+let [pronounsV, setPronounsV] = useState('he/him');
+let [contact, setContact] = useState('');
+let [otherPronoun, setOtherPronoun] = useState('');
+let [blurb, setBlurb] = useState('');
+  const update = (classes) => {
+    let finalPronoun = pronounsV === 'other' ? otherPronoun : pronounsV
+    if(finalPronoun === 'he/him') finalPronoun = 'he-him';
+    push(child(ref(db), 'users/'), {
+      name: name,
+      pronouns: finalPronoun,
+      contact: contact,
+      blurb: blurb,
+      classes: classes
+    });
+  }
+  function testOther () {
+    if (pronounsV == 'other') {
       return (
         <div>
           <div className='row'>
           <div className='left-column'>Other pronoun</div>
           <div className='right-column'><input
             type='text'
-            placeholder='Preferred pronoun that is not on the list'
-            {...register('pronounOther')}
-          /></div></div>
+            value={otherPronoun}
+            placeholder='Preferred pronoun not on the list'
+            onChange={(e) => setOtherPronoun(e.target.value)}
+          />
+          </div>
+          </div>
           <br />
         </div>
       )
     }
   }
+
 
   return (
     <div>
@@ -49,30 +76,37 @@ function Forms() {
 
         <div className='row'>
         <div className='left-column'>Name</div>
-        <div className='right-column'><input
+        <div className='right-column'>
+          <input
           type='text'
-          placeholder='First and last name'
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder='First and Last Name'
           {...register('name')}
         /></div></div>
         <br />
 
         <div className='row'>
         <div className='left-column'>Pronoun</div>
-        <div className='right-column'><select {...register('pronoun')} defaultValue={'they-them'}>
+        <div className='right-column'>
+          <select value = {pronounsV}
+          onChange={(e) => setPronounsV(e.target.value)}
+          >
           {pronouns.map(item => {
             return (<option key={item.value} value={item.value}>{item.text}</option>)
           })}
         </select></div></div>
         <br />
 
-        {otherPronoun()}
+        {testOther()}
         
         <div className='row'>
         <div className='left-column'>Contact</div>
         <div className='right-column'><input
           type='text'
+          value={contact}
+          onChange={(e) => setContact(e.target.value)}
           placeholder='Preferred method of contact'
-          {...register('contact')}
         /></div></div>
         <br />
 
@@ -80,8 +114,9 @@ function Forms() {
         <div className='left-column'>Blurb</div>
         <div className='right-column'><input
           type='text'
+          value={blurb}
+          onChange={(e)=>setBlurb(e.target.value)}
           placeholder='Short blurb/bio about yourself'
-          {...register('blurb')}
         /></div></div>
         <br />
         
@@ -103,16 +138,17 @@ function Forms() {
             <div className='right-column'><input
               type='text'
               placeholder=''
-              {...register(`classes[${i}]`)}
             /></div></div>
             <br />
           </div>
         ))}
 
         <br />
-
-        <button type='submit'>Submit</button>
-        
+        <button type='submit'
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
