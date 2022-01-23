@@ -43,7 +43,6 @@ function Forms() {
       blurb: blurb,
       classes: classes
     });
-    console.log('hi')
   }
 
   function testOther () {
