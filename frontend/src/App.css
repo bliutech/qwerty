@@ -45,6 +45,12 @@
   margin: 0px 0px 25px 0px;
 }
 
+.big-logo {
+  display: block;
+  margin: 25px auto 25px auto;
+  width: 80%;
+}
+
 #nameField h2 {
   display: inline;
 }
@@ -104,7 +110,7 @@ button {
   border-radius: 8px;
   border-width: 2px;
   border-color: #777777;
-  margin: 25px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
   padding: 2px 0px 2px 0px;
 }
 

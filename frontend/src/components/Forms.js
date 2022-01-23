@@ -24,7 +24,7 @@ function Forms() {
   const watchNumClass = watch('numClass');
 
   function classNums() {
-    return [...Array(parseInt(watchNumClass || 0)).keys()];
+    return [...Array(parseInt(watchNumClass || 1)).keys()];
   }
   
 let [name, setName] = useState('');
@@ -152,8 +152,8 @@ let [blurb, setBlurb] = useState('');
         <div className='left-column'>Number of classes</div>
         <div className='right-column'><input
           name='numClass'
-          type='number' min='0'
-          defaultValue={0}
+          type='number' min='1' max='8'
+          defaultValue={1}
           placeholder='Number of classes to be submitted'
           {...register('numClass')}
         /></div></div>
