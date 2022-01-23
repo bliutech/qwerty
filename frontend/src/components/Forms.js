@@ -138,7 +138,6 @@ let [blurb, setBlurb] = useState('');
             <div className='right-column'><input
               type='text'
               placeholder=''
-              {...register(`classes[${i}]`)}
             /></div></div>
             <br />
           </div>
