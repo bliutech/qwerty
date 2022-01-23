@@ -20,7 +20,7 @@ import db from '../config';
 // ]
 
 function ResultMod() {
-  const [results, setResults] = useState([]);
+  let [results, setResults] = useState([]);
 
   async function getUser() {
     let resultsTemp = [];
