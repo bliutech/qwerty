@@ -2,23 +2,6 @@ import { ref, set, get, child } from "firebase/database";
 import { useState, useEffect } from 'react';
 import db from '../config';
 
-// const results = [
-//   {
-//     name: "Benson Liu",
-//     pronoun: "he/him",
-//     contact: "123-456-7890",
-//     blurb: "I am down bad for the study.",
-//     classes: ['CS 35L', 'CS 32', 'MATH 32B']
-//   },
-//   {
-//     name: "Jordan Lin",
-//     pronoun: "they/them",
-//     contact: "987-6544-3210",
-//     blurb: "I was today years old when I learned what NPM stood for. Also, I have no idea what to say here I just need an extremely long description/blurb to be able to stress test this in a multi-line manner.",
-//     classes: ['CS 35L', 'MATH 32B', 'MATH 33A', 'PHYSICS 1A']
-//   }
-// ]
-
 function ResultMod() {
   let [results, setResults] = useState([]);
 
