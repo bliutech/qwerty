@@ -82,7 +82,6 @@ let [blurb, setBlurb] = useState('');
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder='First and Last Name'
-          {...register('name')}
         /></div></div>
         <br />
 
