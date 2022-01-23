@@ -3,7 +3,6 @@ import db from '../config';
 import { useState } from 'react';
 import { ref, set, push, child } from "firebase/database";
 
-
 const pronouns = [
   { value: 'he-him', text: 'he/him' },
   { value: 'he-they', text: 'he/they' },
@@ -72,7 +71,9 @@ let [blurb, setBlurb] = useState('');
     <div>
 
       <h1>Forms</h1>
+
       <form onSubmit={handleSubmit(onSubmit)}>
+
         <div className='row'>
         <div className='left-column'>Name</div>
         <div className='right-column'>
@@ -81,6 +82,7 @@ let [blurb, setBlurb] = useState('');
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder='First and Last Name'
+          {...register('name')}
         /></div></div>
         <br />
 
@@ -143,7 +145,6 @@ let [blurb, setBlurb] = useState('');
         ))}
 
         <br />
-
         <button type='submit'
           onClick={handleSubmit}
         >
