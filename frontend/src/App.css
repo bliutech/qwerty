@@ -1,13 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .general {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+  background: repeating-linear-gradient(
+    90deg,
+    #ff98a0, #ff98a0 16.67%,
+    #ffc080 16.67%, #ffc080 33.33%,
+    #ffe8c0 33.33%, #ffe8c0 50%,
+    #d8f0c0 50%, #d8f0c0 66.67%,
+    #b8e8d8 66.67%, #b8e8d8 83.33%,
+    #c0d0f0 83.33%, #c0d0f0 100%
+  );
   align-items: center;
   justify-content: center;
   display: flex;
   font-size: 16px;
   font-family: 'Inter';
   font-weight: 700;
+  height: 100vh;
 }
 
 .left-column {
@@ -63,4 +73,11 @@ button {
   border-width: 2px;
   margin: 10px 0px 0px 0px;
   padding: 2px 0px 2px 0px;
+}
+
+.backgroundRed {
+  position: absolute;
+  left: 0%;
+  width: 16.7%;
+  background-color: #ff98a0;
 }

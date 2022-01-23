@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-function Login() {
+function RegisterMod() {
 
   const { register, handleSubmit, reset, clearErrors} = useForm();
 
@@ -9,25 +9,25 @@ function Login() {
   return (
     <div>
 
-      <h1>Login</h1>
+      <h1>Register</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
         <div className='row'>
-        <div className='left-column'>Name</div>
+        <div className='left-column'>Username</div>
         <div className='right-column'><input
           type='text'
-          placeholder='First and last name'
-          {...register('name')}
+          placeholder='Unique username'
+          {...register('username')}
         /></div></div>
         <br />
 
         <div className='row'>
-        <div className='left-column'>Name</div>
+        <div className='left-column'>Password</div>
         <div className='right-column'><input
           type='text'
-          placeholder='First and last name'
-          {...register('name')}
+          placeholder='Respectfully complex password'
+          {...register('password')}
         /></div></div>
         <br />
 
@@ -37,4 +37,4 @@ function Login() {
   )
 }
 
-export default Login;
+export default RegisterMod;

@@ -1,12 +1,14 @@
 import './App.css';
-import Login from './components/Login.js'
+import RegisterMod from './components/RegisterMod.js'
+import LoginMod from './components/LoginMod.js'
 import Forms from './components/Forms.js'
 
 function App() {
   return (
     <div className='general'>
-      <Login />
-      {/* <Forms /> */}
+      {/* <RegisterMod /> */}
+      {/* <LoginMod /> */}
+      <Forms />
     </div>
   );
 }
