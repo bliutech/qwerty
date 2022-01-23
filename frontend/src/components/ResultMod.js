@@ -20,43 +20,40 @@ import db from '../config';
 // ]
 
 function ResultMod() {
-  let results = []
+  const [results, setResults] = useState([]);
 
   async function getUser() {
+    let resultsTemp = [];
     let dbSnapshot = await get(child(ref(db), '/users'));
     dbSnapshot.forEach(user =>{
-      results.push({
+      resultsTemp.push({
         name: user.val().name,
         pronouns: user.val().pronouns,
         contact: user.val().contact,
         blurb: user.val().blurb,
-        classes: user.val().classes
+        classes: user.val().classes,
+        key: user.key
       }); 
     });
+    return resultsTemp;
   }
 
-  getUser();
-  console.log(results);
-
-  // useEffect(async () => {
-  //   console.log('hi');
-  //   await getUser();
-  // }, []);
-
-  console.log(results)
+  (async () => {
+    const resultsTemp = await getUser();
+    setResults(resultsTemp);
+  })();
 
   return (
     <div className='resultPage'>
 
       <h1>Results</h1>
 
-      {results.forEach(person => {
-        {console.log(person.name)}
+      {results.map(person => {
         return (
-          <div className='resultField white-rectangle' key={person.name}>
+          <div className='resultField white-rectangle' key={person.key}>
             <div id='nameField'>
               <h2>{person.name} </h2>
-              <span>({person.pronoun})</span>
+              <span>({person.pronouns})</span>
             </div>
             <p><b>Contact: </b>{person.contact}</p>
             <p><b>Blurb: </b>{person.blurb}</p>
