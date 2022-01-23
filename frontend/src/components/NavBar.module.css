@@ -4,6 +4,7 @@
     list-style-type: none;
     display: flex;
     align-items: center;
+    vertical-align: bottom;
     justify-content: left;
     top: 0;
     background-color: #ffffff;
@@ -24,26 +25,30 @@
     overflow: hidden;
     display:inline;
     align-items: center;
-    background-color: rgb(255, 255, 255);
+    vertical-align: top;
 }
 
 .header li {
     display:inline;
-    top: 5;
-  }
+    vertical-align: top;
+    margin-top: 10%;
+}
 
 .header li a{
-    padding: 30px;
-    font-size: 1.5rem;
+    padding: 25px;
+    margin-top:50px;
+    font-size: 2.0rem;
     color: black;
+    text-decoration: none;
 }
-  
 
-
-  
-  /* Change the link color to #111 (black) on hover */
 .header li a:hover,
 .header a:active,
 .header a.active {
     color: #ff98a0;
+  }
+
+ .header img{
+      vertical-align: bottom;
+      padding: 10px;
   }

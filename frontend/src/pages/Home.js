@@ -1,4 +1,4 @@
-import logo from '..//files/logo-whole.svg';
+import logo from '../files/logo-whole.svg';
 
 export default function Home(){
     return(
