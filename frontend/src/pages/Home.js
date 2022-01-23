@@ -4,7 +4,7 @@ export default function Home(){
     return(
         <div>
             <h1>Welcome to Qwerty!</h1>
-            <img className="biglogo" src={logo} alt = "logo" />
+            <img className="big-logo" src={logo} alt = "logo" />
             <p className='white-rectangle'>This is a safe space for people of all identities. Qwerty is the first social website focused on connecting
                 students with similar classes and gender identities. To get started simply input your information and our system
                 will automatically connect you with other students. If there are no other students with similar gender identities
