@@ -3,13 +3,13 @@ import db from '../config';
 import { useState } from 'react';
 import { ref, set, get, child } from "firebase/database";
 const pronouns = [
-  { value: 'he-him', text: 'he/him' },
-  { value: 'he-they', text: 'he/they' },
-  { value: 'they-he', text: 'they/he' },
-  { value: 'they-them', text: 'they/them' },
-  { value: 'they-she', text: 'they/she' },
-  { value: 'she-they', text: 'she/they' },
-  { value: 'she-her', text: 'she/her' },
+  { value: 'he/him', text: 'he/him' },
+  { value: 'he/they', text: 'he/they' },
+  { value: 'they/he', text: 'they/he' },
+  { value: 'they/them', text: 'they/them' },
+  { value: 'they/she', text: 'they/she' },
+  { value: 'she/they', text: 'she/they' },
+  { value: 'she/her', text: 'she/her' },
   { value: 'other', text: 'other' }
 ];
 
@@ -20,7 +20,6 @@ function Forms() {
   const onSubmit = data => {
     update(data.classes);
     console.log(data.classes);
-
   }  // put function that calls backend
 
   const watchNumClass = watch('numClass');
@@ -28,7 +27,7 @@ function Forms() {
   function classNums() {
     return [...Array(parseInt(watchNumClass || 0)).keys()];
   }
-
+  
 let [name, setName] = useState('');
 let [user, setUser] = useState('');
 let [pass, setPass] = useState('');
@@ -57,13 +56,15 @@ let [blurb, setBlurb] = useState('');
       classes: classes,
       password: pass,
     });
+    console.log('hi')
   }
+
   function testOther () {
     if (pronounsV === 'other') {
       return (
         <div>
           <div className='row'>
-          <div className='left-column'>Other pronoun</div>
+          <div className='left-column'>Other pronoun(s)</div>
           <div className='right-column'><input
             type='text'
             value={otherPronoun}
