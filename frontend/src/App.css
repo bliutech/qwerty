@@ -75,6 +75,10 @@ button {
   padding: 2px 0px 2px 0px;
 }
 
+button:hover{
+  background-color:red;
+}
+
 .backgroundRed {
   position: absolute;
   left: 0%;
