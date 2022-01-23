@@ -16,7 +16,7 @@
   display: flex;
   font-size: 16px;
   font-family: 'Inter';
-  font-weight: 700;
+  font-weight: 400;
   height: 100vh;
 }
 
@@ -24,6 +24,7 @@
   position: absolute;
   right: 55%;
   margin: 4px 10px 0px 0px;
+  font-weight: 700;
 }
 
 .right-column {
@@ -36,9 +37,30 @@
   margin: 15px 0px 15px 0px;
 }
 
+.resultPage {
+  height: unset !important;
+}
+
+.resultField {
+  margin: 0px 0px 25px 0px;
+}
+
+#nameField h2 {
+  display: inline;
+}
+
+#nameField p {
+  display: inline;
+}
+
+#classField p {
+  display: inline;
+}
+
 h1 {
   position: relative;
   font-weight: 1000;
+  text-align: center;
 }
 
 input {

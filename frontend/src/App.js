@@ -1,3 +1,8 @@
+import './App.css';
+import RegisterMod from './components/RegisterMod.js'
+import LoginMod from './components/LoginMod.js'
+import Forms from './components/Forms.js'
+import ResultMod from './components/ResultMod.js'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
