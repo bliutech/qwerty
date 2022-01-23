@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import db from '../config';
 import { useState } from 'react';
 import { ref, set, get, child } from "firebase/database";
+import {Link} from "react-router-dom";
 const pronouns = [
   { value: 'he/him', text: 'he/him' },
   { value: 'he/they', text: 'he/they' },
@@ -16,6 +17,7 @@ const pronouns = [
 
 function Forms() {
   const { register, handleSubmit, watch } = useForm();
+  let [boolCheck, setBoolCheck] = useState(false);
 
   const onSubmit = data => {
     update(data.classes);
@@ -39,12 +41,16 @@ let [blurb, setBlurb] = useState('');
     let db_snapshot = await get(child(ref(db), 'users/'));
       db_snapshot.forEach(code_snap =>{
         if(code_snap.key === user){
-          alert('Username taken!');
+          //alert('Username taken!');
           boolCheckUser = true;
           return;
         }
       });
-    if(boolCheckUser) return;
+    if(boolCheckUser){
+      alert('Username take!');
+      return;
+    }
+    setBoolCheck(true);
     let finalPronoun = pronounsV === 'other' ? otherPronoun : pronounsV
     set(child(ref(db), 'users/' + user), {
       name: name,
@@ -176,7 +182,7 @@ let [blurb, setBlurb] = useState('');
         <button type='submit'
           onClick={handleSubmit}
         >
-          Submit
+          <Link to={boolCheck ? '/results' : '/register'}>Submit</Link>
         </button>
       </form>
     </div>
