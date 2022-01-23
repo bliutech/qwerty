@@ -30,7 +30,7 @@
 
 .header li {
     display:inline;
-    vertical-align: top;
+    vertical-align: 25px;
     margin-top: 10%;
 }
 
