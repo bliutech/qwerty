@@ -2,33 +2,33 @@ import { useForm } from 'react-hook-form';
 import db from '../config';
 import { useState } from 'react';
 import { ref, set, get, child } from "firebase/database";
+import {Link} from "react-router-dom";
 const pronouns = [
-  { value: 'he-him', text: 'he/him' },
-  { value: 'he-they', text: 'he/they' },
-  { value: 'they-he', text: 'they/he' },
-  { value: 'they-them', text: 'they/them' },
-  { value: 'they-she', text: 'they/she' },
-  { value: 'she-they', text: 'she/they' },
-  { value: 'she-her', text: 'she/her' },
+  { value: 'he/him', text: 'he/him' },
+  { value: 'he/they', text: 'he/they' },
+  { value: 'they/he', text: 'they/he' },
+  { value: 'they/them', text: 'they/them' },
+  { value: 'they/she', text: 'they/she' },
+  { value: 'she/they', text: 'she/they' },
+  { value: 'she/her', text: 'she/her' },
   { value: 'other', text: 'other' }
 ];
 
 
 function Forms() {
   const { register, handleSubmit, watch } = useForm();
+  let [boolCheck, setBoolCheck] = useState(false);
 
   const onSubmit = data => {
     update(data.classes);
-    console.log(data.classes);
-
   }  // put function that calls backend
 
   const watchNumClass = watch('numClass');
 
   function classNums() {
-    return [...Array(parseInt(watchNumClass || 0)).keys()];
+    return [...Array(parseInt(watchNumClass || 1)).keys()];
   }
-
+  
 let [name, setName] = useState('');
 let [user, setUser] = useState('');
 let [pass, setPass] = useState('');
@@ -41,14 +41,17 @@ let [blurb, setBlurb] = useState('');
     let db_snapshot = await get(child(ref(db), 'users/'));
       db_snapshot.forEach(code_snap =>{
         if(code_snap.key === user){
-          alert('Username taken!');
+          //alert('Username taken!');
           boolCheckUser = true;
           return;
         }
       });
-    if(boolCheckUser) return;
+    if(boolCheckUser){
+      alert('Username take!');
+      return;
+    }
+    setBoolCheck(true);
     let finalPronoun = pronounsV === 'other' ? otherPronoun : pronounsV
-    if(finalPronoun === 'he/him') finalPronoun = 'he-him';
     set(child(ref(db), 'users/' + user), {
       name: name,
       pronouns: finalPronoun,
@@ -58,12 +61,13 @@ let [blurb, setBlurb] = useState('');
       password: pass,
     });
   }
+
   function testOther () {
     if (pronounsV === 'other') {
       return (
         <div>
           <div className='row'>
-          <div className='left-column'>Other pronoun</div>
+          <div className='left-column'>Other pronoun(s)</div>
           <div className='right-column'><input
             type='text'
             value={otherPronoun}
@@ -117,7 +121,7 @@ let [blurb, setBlurb] = useState('');
         <br />
 
         <div className='row'>
-        <div className='left-column'>Pronoun</div>
+        <div className='left-column'>Pronoun(s)</div>
         <div className='right-column'>
           <select value = {pronounsV}
           onChange={(e) => setPronounsV(e.target.value)}
@@ -154,8 +158,8 @@ let [blurb, setBlurb] = useState('');
         <div className='left-column'>Number of classes</div>
         <div className='right-column'><input
           name='numClass'
-          type='number' min='0'
-          defaultValue={0}
+          type='number' min='1' max='8'
+          defaultValue={1}
           placeholder='Number of classes to be submitted'
           {...register('numClass')}
         /></div></div>
@@ -178,7 +182,7 @@ let [blurb, setBlurb] = useState('');
         <button type='submit'
           onClick={handleSubmit}
         >
-          Submit
+          <Link to={boolCheck ? '/results' : '/register'}>Submit</Link>
         </button>
       </form>
     </div>

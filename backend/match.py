@@ -1,5 +1,6 @@
 import json
 
+
 global_classes = ["MATH 32B" , "CS 31" , "PHYSICS 1A", "ENGR 96A", "CS 32", "CS 33"]
 global_pronouns = ["he/him", "he/him", "they/them", "she/they", "he/they", "he/him", "they/he", "he/she/they", "other"]
 databaseOfLists = []
